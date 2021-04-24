@@ -1,0 +1,182 @@
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
+import moment from 'moment';
+import formatting from '../helpers/formatting';
+import { Feather } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+
+const RunDetails = ({ route }) => {
+
+  const [mapTrace, setMapTrace] = useState([{latitude: 41, longitude: 2}])
+
+  const { item } = route.params;
+  const { distance, duration, avgPace, timeStarted, id } = item;
+
+  useEffect(() => {
+    (async function fetchTraces () {
+      const raw = await fetch(`http://192.168.1.125:3000/runTrace/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json'
+        }
+      });
+      const response = await raw.json();
+      setMapTrace(JSON.parse(response[0].mapTrace));
+    })();
+
+  }, [])
+
+  const time = formatting.timeFormat(duration);
+  const pace = formatting.avgPaceFormat(avgPace);
+
+  return (
+    <View style={styles.container}>
+      <MapView
+        style={styles.map}
+        region={
+          {
+            latitude: 41.3950212,
+            longitude: 2.1976979,
+            latitudeDelta: 0.005,
+            longitudeDelta: 0.03,
+          }
+        }
+      >
+        <MapView.Marker
+          coordinate={mapTrace[mapTrace.length - 1]}
+        />
+        <MapView.Polyline
+          coordinates={mapTrace}
+          strokeColor={'#00BFA6'}
+          strokeWidth={6}
+        />
+      </MapView>
+      <View style={styles.mainInfo}>
+        <View style={styles.middle}>
+          <Text style={styles.mainValue}>{distance.toFixed(2)} km</Text>
+          <Text style={styles.helper}>Distance</Text>
+        </View>
+        <View style={styles.middle}>
+          <Text style={styles.mainValue}>{time}</Text>
+          <Text style={styles.helper}>Duration</Text>
+        </View>
+      </View>
+      <View style={styles.date}>
+        <Text style={{...styles.property, ...styles.date}}>
+          {moment(item.createdAt).format('ddd, L')}
+        </Text>
+      </View>
+      <View style={styles.content}>
+        <View style={styles.infoContainer}>
+          <View style={styles.iconProp}>
+            <MaterialIcons name="speed" style={styles.icon}/>
+            <Text style={styles.name}>Avg. Pace</Text>
+          </View>
+          <Text style={styles.property}>{pace} min/km</Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <View style={styles.iconProp}>
+            <Feather name="trending-up" style={styles.icon}/>
+            <Text style={styles.name}>El. Gain</Text>
+          </View>
+          <Text style={styles.property}>76 m</Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <View style={styles.iconProp}>
+            <Feather name="trending-down" style={styles.icon}/>
+            <Text style={styles.name}>El. Loss</Text>
+          </View>
+          <Text style={styles.property}>74 m</Text>
+        </View>
+        <View style={styles.infoContainer}>
+          <View style={styles.iconProp}>
+            <Feather name="play" style={styles.icon}/>
+            <Text style={styles.name}>Start</Text>
+          </View>
+          <Text style={styles.property}>{moment(timeStarted).format('LT')}</Text>
+        </View>
+        {/* <View style={styles.infoContainer}>
+          <Text style={styles.name}>Finish</Text>
+          <Text style={styles.property}>{moment(item.createdAt).format('LT')}</Text>
+        </View> */}
+        {/* <View style={styles.date}>
+        <Text style={{...styles.property, ...styles.date}}>
+          {moment(item.createdAt).format('ddd, L')}
+        </Text>
+      </View> */}
+      </View>
+
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'rgba(0, 191, 166, 0.15)',
+
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: '40%',
+  },
+  mainInfo: {
+    height: '15%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#4D8AF0',
+    backgroundColor: 'rgba(77, 138, 240, 0.8)',
+  },
+  mainValue: {
+    color: '#4D8AF0',
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  content: {
+    height: '45%',
+  },
+  helper: {
+    color: '#4D8AF0',
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center'
+  },
+  middle: {
+    alignSelf: 'center'
+  },
+  infoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 14,
+    marginHorizontal: 30,
+    borderBottomColor: 'rgba(77, 138, 240, 0.2)',
+    borderBottomWidth: 2,
+  },
+  name: {
+    fontSize: 18,
+    color: '#4D8AF0',
+    // fontWeight: 'bold',
+  },
+  property: {
+    fontSize: 18,
+    color: '#4D8AF0',
+    // fontWeight: 'bold',
+  },
+  date: {
+    alignItems: 'center',
+    margin: 5,
+    fontSize: 20,
+    marginBottom: 2,
+  },
+  iconProp: {
+    flexDirection: 'row',
+  },
+  icon: {
+    fontSize: 18,
+    color: "rgba(77, 138, 240, 1)",
+    marginRight: 12,
+  }
+});
+
+export default RunDetails;
