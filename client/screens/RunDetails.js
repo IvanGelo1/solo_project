@@ -9,6 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const RunDetails = ({ route }) => {
 
   const [mapTrace, setMapTrace] = useState([{latitude: 41, longitude: 2}])
+  // console.log('dateHandler', dateHandler);
 
   const { item } = route.params;
   const { distance, duration, avgPace, timeStarted, id } = item;

@@ -19,6 +19,7 @@ const Stack = createStackNavigator();
 const App = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrotMsg] = useState(null);
+  // const [date, setDate] = useState('');
 
   useEffect(() => {
     (async () => {
