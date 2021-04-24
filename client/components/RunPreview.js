@@ -4,13 +4,27 @@ import moment from 'moment';
 import formatting from '../helpers/formatting';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { dateChange } from '../features/dateChangeSlice';
+
 const RunPreview = ({ navigation, item }) => {
 
   const { distance, duration } = item;
   const formatted = formatting.timeFormat(duration);
 
+  const date = useSelector((state) => state.date.value);
+  // console.log('date', date);
+  const dispatch = useDispatch();
+
+  const formattedDate = moment(item.createdAt).format('ddd, L');
+
+  const dateUpdate = () => {
+    dispatch(dateChange(formattedDate));
+    navigation.navigate('RunDetails', {item})
+  }
+
   return (
-    <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('RunDetails', {item})}}>
+    <TouchableOpacity style={styles.button} onPress={() => dateUpdate()}>
       <Text style={styles.date}>{moment(item.createdAt).format('ddd, L')}</Text>
       <View style={styles.main}>
         <Text style={styles.distance}>{distance.toFixed(2)} km</Text>
