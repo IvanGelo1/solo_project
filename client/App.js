@@ -107,7 +107,7 @@ const App = () => {
           name="RunDetails"
           component={RunDetails}
           options={{
-            title: 'Run details',
+            title: 'Sat, 04/24/2021',
             headerStyle: {
               backgroundColor: '#00BFA6',
               // height: 50

@@ -62,11 +62,11 @@ const RunDetails = ({ route }) => {
           <Text style={styles.helper}>Duration</Text>
         </View>
       </View>
-      <View style={styles.date}>
+      {/* <View style={styles.date}>
         <Text style={{...styles.property, ...styles.date}}>
           {moment(item.createdAt).format('ddd, L')}
         </Text>
-      </View>
+      </View> */}
       <View style={styles.content}>
         <View style={styles.infoContainer}>
           <View style={styles.iconProp}>
@@ -113,7 +113,7 @@ const RunDetails = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'rgba(0, 191, 166, 0.15)',
+    backgroundColor: 'rgba(0, 191, 166, 0.10)',
 
   },
   map: {
@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
   },
   content: {
     height: '45%',
+    justifyContent: 'space-evenly'
   },
   helper: {
     color: '#4D8AF0',
@@ -156,6 +157,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 18,
     color: '#4D8AF0',
+    marginBottom: 6
     // fontWeight: 'bold',
   },
   property: {
