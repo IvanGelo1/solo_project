@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   },
   subHeader: {
     backgroundColor: '#FFD037',
-    height: 55,
+    height: 45,
     justifyContent: 'center',
     alignItems: 'center',
   },
