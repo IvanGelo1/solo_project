@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import RunPreview from '../components/RunPreview';
 import formatting from '../helpers/formatting';
 import { useSelector } from 'react-redux';
@@ -16,8 +16,7 @@ const MyRuns = ({ navigation }) => {
 
   useEffect(() => {
     const fetchRuns = async () => {
-      const allRuns = await apiService.getAllRuns(userId);
-      const sorted = allRuns.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      const sorted = await apiService.getAllRuns(userId);
       if (sorted.length) {
         setRuns(prevRuns => sorted);
         setTotalRuns(prevTotalRuns => sorted.length);
@@ -28,7 +27,7 @@ const MyRuns = ({ navigation }) => {
     fetchRuns();
   }, []);
 
-  const totDur = formatting.timeFormat(totalDuration);
+  const duration = formatting.timeFormat(totalDuration);
 
   return (
     <View style={styles.container}>
@@ -36,7 +35,7 @@ const MyRuns = ({ navigation }) => {
       <View style={styles.allData}>
         <Text style={styles.total}>{totalRuns} runs</Text>
         <Text style={styles.total}>{totalDistance.toFixed(2)} km</Text>
-        <Text style={styles.total}>{totDur}</Text>
+        <Text style={styles.total}>{duration}</Text>
       </View>
       {
         runs.length
@@ -47,10 +46,7 @@ const MyRuns = ({ navigation }) => {
         renderItem={(data) => <RunPreview navigation={navigation} item={data.item} />}
         />
         :
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>These numbers look kinda sad, maybe you should go and fix that...</Text>
-        </View>
-
+        <View></View>
       }
   </View>
   );

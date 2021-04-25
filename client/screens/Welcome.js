@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   startContainer: {
-    // alignContent: 'flex-end',
     marginBottom: 30,
   },
   img: {

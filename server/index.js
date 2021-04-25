@@ -8,19 +8,19 @@ const dotenv = require('dotenv')
 dotenv.config();
 
 const app = express();
-// const port = 3000;
 
 app.use(express.json());
 app.use(router);
 
-app.listen(process.env.SERVER_PORT , async () => {
-  console.log(`Server started at http://localhost:${process.env.SERVER_PORT}`);
-  try {
-    await db.sequelize.sync();
-    console.log('Database connected');
-  } catch(err) {
-    console.error(err);
-  };
-});
+(async function bootstrap () {
+	try {
+		await db.sequelize.sync();
+		console.log('Database connected');
+	} catch (err) {
+		console.error(err);
+	}
 
-// (() => )()
+  app.listen(process.env.SERVER_PORT, () => {
+    console.log(`Server started at http://localhost:${process.env.SERVER_PORT}`);
+  });
+})();

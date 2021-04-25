@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from '@expo/vector-icons';
 
@@ -32,7 +32,7 @@ const Navigation = ({ location }) => {
           showLabel: false,
           style: {
             backgroundColor: '#00BFA6',
-            height: 45,
+            height: 42,
           }
         }}
       >

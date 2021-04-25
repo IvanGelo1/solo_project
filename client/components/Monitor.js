@@ -2,9 +2,9 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import formatting from '../helpers/formatting';
 
-const Monitor = ({ distance, avgPace, secCount }) => {
+const Monitor = ({ distance, avgPace, duration }) => {
 
-  const time = formatting.timeFormat(secCount);
+  const time = formatting.timeFormat(duration);
   const pace = formatting.avgPaceFormat(avgPace);
 
   return (
@@ -20,7 +20,6 @@ const Monitor = ({ distance, avgPace, secCount }) => {
         <View style={styles.avgPaceView}>
           <Text style={styles.avgPaceName}>AvgPace (min/km)</Text>
           <Text style={styles.avgPace}>{pace}</Text>
-
         </View>
       </View>
     </View>

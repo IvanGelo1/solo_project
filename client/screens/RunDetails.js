@@ -62,11 +62,6 @@ const RunDetails = ({ route }) => {
           <Text style={styles.helper}>Duration</Text>
         </View>
       </View>
-      {/* <View style={styles.date}>
-        <Text style={{...styles.property, ...styles.date}}>
-          {moment(item.createdAt).format('ddd, L')}
-        </Text>
-      </View> */}
       <View style={styles.content}>
         <View style={styles.infoContainer}>
           <View style={styles.iconProp}>
@@ -96,17 +91,7 @@ const RunDetails = ({ route }) => {
           </View>
           <Text style={styles.property}>{moment(timeStarted).format('LT')}</Text>
         </View>
-        {/* <View style={styles.infoContainer}>
-          <Text style={styles.name}>Finish</Text>
-          <Text style={styles.property}>{moment(item.createdAt).format('LT')}</Text>
-        </View> */}
-        {/* <View style={styles.date}>
-        <Text style={{...styles.property, ...styles.date}}>
-          {moment(item.createdAt).format('ddd, L')}
-        </Text>
-      </View> */}
       </View>
-
     </View>
   );
 };
@@ -158,12 +143,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#4D8AF0',
     marginBottom: 6
-    // fontWeight: 'bold',
   },
   property: {
     fontSize: 18,
     color: '#4D8AF0',
-    // fontWeight: 'bold',
   },
   date: {
     alignItems: 'center',

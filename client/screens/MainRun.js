@@ -26,10 +26,10 @@ const MainRun = ({ location }) => {
   const [distance, setDistance] = useState(0);
   const [mapTrace, setMapTrace] = useState([]);
   const [avgPace, setAvgPace] = useState(0);
-  const [secCount, setSecCount] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [elGain, setElGain] = useState(0);
-  const [elLoss, setElLoss] = useState(0);
+  const [elevationGain, setElevationGain] = useState(0);
+  const [elevationLoss, setElevationLoss] = useState(0);
   const [timeStarted, setTimeStarted] = useState(0);
 
   useEffect(() => {
@@ -43,9 +43,9 @@ const MainRun = ({ location }) => {
 
     setDistance(prevDistance => prevDistance + runCalc.distanceBetween(lastPosition, currentPosition));
     setAvgPace(prevAvgPace => runCalc.averagePace(distance, location, currentPosition));
-    setSecCount(prevSecCount => prevSecCount + runCalc.timeBetween(lastPosition, currentPosition));
-    setElGain(prevElGain => runCalc.elGain(lastPosition, currentPosition));
-    setElLoss(prevElLoss => runCalc.elLoss(lastPosition, currentPosition));
+    setDuration(prevDuration => prevDuration + runCalc.timeBetween(lastPosition, currentPosition));
+    setElevationGain(prevElevationGain => runCalc.elGain(lastPosition, currentPosition));
+    setElevationLoss(prevElevationLoss => runCalc.elLoss(lastPosition, currentPosition));
   }, [positions]);
 
   const startRunning = async () => {
@@ -66,9 +66,9 @@ const MainRun = ({ location }) => {
     const run = {
         distance,
         avgPace,
-        duration: secCount,
-        elevationGain: elGain,
-        elevationLoss: elLoss,
+        duration,
+        elevationGain,
+        elevationLoss,
         timeStarted,
         UserId
       };
@@ -83,7 +83,7 @@ const MainRun = ({ location }) => {
     setDistance(0);
     setAvgPace(0),
     setPositions([]);
-    setSecCount(0);
+    setDuration(0);
     setIsRunning(false);
   };
 
@@ -94,7 +94,7 @@ const MainRun = ({ location }) => {
 
   return (
     <View independent={true}>
-      <Monitor distance={distance} avgPace={avgPace} secCount={secCount} />
+      <Monitor distance={distance} avgPace={avgPace} duration={duration} />
       <MapView style={styles.map} /* initialRegion={initialPosition} */ region={initialPosition}>
         <MapView.Marker
           coordinate={marker}
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   },
   buttonStart: {
     position: 'absolute',
-    top: '85%',
+    top: '87%',
     alignSelf: 'center',
     borderRadius: 40,
     padding: 14,
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   buttonStop: {
     position: 'absolute',
-    top: '85%',
+    top: '87%',
     alignSelf: 'center',
     borderRadius: 40,
     padding: 14,

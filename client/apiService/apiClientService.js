@@ -20,7 +20,8 @@ const getAllRuns = async (userId) => {
     }
   });
   const response = await raw.json();
-  return response;
+  const sorted = response.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  return sorted;
 };
 
 const createRunTrace = async (runTrace) => {

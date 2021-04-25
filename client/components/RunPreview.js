@@ -4,7 +4,7 @@ import moment from 'moment';
 import formatting from '../helpers/formatting';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { dateChange } from '../features/dateChangeSlice';
 
 const RunPreview = ({ navigation, item }) => {
@@ -12,8 +12,6 @@ const RunPreview = ({ navigation, item }) => {
   const { distance, duration } = item;
   const formatted = formatting.timeFormat(duration);
 
-  const date = useSelector((state) => state.date.value);
-  // console.log('date', date);
   const dispatch = useDispatch();
 
   const formattedDate = moment(item.createdAt).format('ddd, L');

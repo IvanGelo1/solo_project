@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
   signIn: {
     color: '#00BFA6',
     fontWeight: 'bold',
-    // textAlign: 'center',
   },
   input: {
     backgroundColor: 'white',
@@ -96,7 +95,6 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   startContainer: {
-    // alignContent: 'flex-end',
     marginBottom: 30,
   },
   img: {

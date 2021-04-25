@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import apiService from '../apiService/apiClientService';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userChange } from '../features/activeUserSlice';
 
 const SignUp = ({ navigation }) => {
