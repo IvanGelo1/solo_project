@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Run.associate = model => {
+    Run.belongsTo(model.User);
     Run.hasMany(model.MapTrace);
   };
 
