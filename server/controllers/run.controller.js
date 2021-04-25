@@ -4,7 +4,8 @@ const db = require('../models/index');
 
 async function getRuns (req, res) {
   try {
-    const runs = await db.Run.findAll();
+    const { userId } = req.params;
+    const runs = await db.Run.findAll({ where: {UserId: userId}});
     res.status(200);
     res.send(runs);
   } catch (err) {

@@ -4,6 +4,8 @@ import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
 import runCalc from '../helpers/runCalc';
 
+import { useSelector } from 'react-redux';
+
 import Monitor from '../components/Monitor';
 
 import apiService from '../apiService/apiClientService';
@@ -16,6 +18,8 @@ const MainRun = ({ location }) => {
     latitudeDelta: 0.001,
     longitudeDelta: 0.01,
   };
+
+  const UserId = useSelector((state) => state.user.value);
 
   const [listener, setListener] = useState({});
   const [positions, setPositions] = useState([]);
@@ -66,6 +70,7 @@ const MainRun = ({ location }) => {
         elevationGain: elGain,
         elevationLoss: elLoss,
         timeStarted,
+        UserId
       };
 
     const createdRun = await apiService.createRun(run);

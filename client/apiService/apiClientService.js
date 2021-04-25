@@ -12,8 +12,8 @@ const createRun = async (run) => {
   return response;
 };
 
-const getAllRuns = async () => {
-  const raw = await fetch(`${EXPO_API_URL}/runs`, {
+const getAllRuns = async (userId) => {
+  const raw = await fetch(`${EXPO_API_URL}/runs/${userId}`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json'

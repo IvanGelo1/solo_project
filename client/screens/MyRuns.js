@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import RunPreview from '../components/RunPreview';
 import formatting from '../helpers/formatting';
+import { useSelector } from 'react-redux';
 
 import apiService from '../apiService/apiClientService';
 
@@ -11,10 +12,11 @@ const MyRuns = ({ navigation }) => {
   const [totalDistance, setTotalDistance] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
 
+  const userId = useSelector((state) => state.user.value);
 
   useEffect(() => {
     const fetchRuns = async () => {
-      const allRuns = await apiService.getAllRuns();
+      const allRuns = await apiService.getAllRuns(userId);
       const sorted = allRuns.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
       if (sorted.length) {
         setRuns(prevRuns => sorted);
