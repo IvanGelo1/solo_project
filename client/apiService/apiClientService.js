@@ -1,6 +1,7 @@
+import {EXPO_API_URL } from '@env';
 
 const createRun = async (run) => {
-  const raw = await fetch('http://192.168.1.125:3000/run', {
+  const raw = await fetch(`${EXPO_API_URL}/run`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
@@ -12,7 +13,7 @@ const createRun = async (run) => {
 };
 
 const getAllRuns = async () => {
-  const raw = await fetch('http://192.168.1.125:3000/runs', {
+  const raw = await fetch(`${EXPO_API_URL}/runs`, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json'
@@ -23,7 +24,7 @@ const getAllRuns = async () => {
 };
 
 const createRunTrace = async (runTrace) => {
-  const raw = await fetch('http://192.168.1.125:3000/runTrace', {
+  const raw = await fetch(`${EXPO_API_URL}/runTrace`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
