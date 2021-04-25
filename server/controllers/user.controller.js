@@ -26,9 +26,6 @@ async function createUser (req, res) {
 
 async function userLogin (req, res) {
   const { email, password } = req.body;
-  console.log('email', email);
-  console.log('password', password);
-
   try {
     const user = await db.User.findAll({where: {
       email: email,

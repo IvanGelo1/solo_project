@@ -56,7 +56,6 @@ const login = async (user) => {
     body: JSON.stringify(user)
   });
   const response = await raw.json();
-  console.log(response);
   return response;
 };
 

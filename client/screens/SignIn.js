@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, Image } from 'react-native';
+import apiService from '../apiService/apiClientService';
+
+import { useDispatch } from 'react-redux';
+import { userChange } from '../features/activeUserSlice';
 
 const SignIn = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+
+  const onSign = async () => {
+    const user = {
+      email,
+      password,
+    };
+    const currentUser = await apiService.login(user);
+    dispatch(userChange(currentUser.id));
+    navigation.navigate('Navigation');
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.head}>Welcome back!</Text>
@@ -11,11 +30,22 @@ const SignIn = ({ navigation }) => {
       />
       <View style={styles.startContainer}>
         <View>
-          <TextInput placeholder='Email' style={styles.input} />
-          <TextInput placeholder='Password' style={styles.input} />
+          <TextInput
+            email={email}
+            onChangeText={email => setEmail(email)}
+            placeholder='Email'
+            style={styles.input}
+          />
+          <TextInput
+            password={password}
+            secureTextEntry={true}
+            onChangeText={password => setPassword(password)}
+            placeholder='Password'
+            style={styles.input}
+          />
           <Text style={styles.forgot}>Forgot password</Text>
         </View>
-          <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('Navigation')}}>
+          <TouchableOpacity style={styles.button} onPress={() => onSign()}>
             <Text style={styles.text}>Sign In</Text>
           </TouchableOpacity>
             <View style={styles.signCont}>
