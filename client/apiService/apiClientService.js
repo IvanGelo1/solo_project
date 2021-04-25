@@ -47,4 +47,17 @@ const createUser = async (user) => {
   return response;
 };
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser };
+const login = async (user) => {
+  const raw = await fetch(`${EXPO_API_URL}/login`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  });
+  const response = await raw.json();
+  console.log(response);
+  return response;
+};
+
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login };

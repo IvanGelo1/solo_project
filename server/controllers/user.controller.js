@@ -24,4 +24,22 @@ async function createUser (req, res) {
   }
 };
 
-module.exports = { getUsers, createUser };
+async function userLogin (req, res) {
+  const { email, password } = req.body;
+  console.log('email', email);
+  console.log('password', password);
+
+  try {
+    const user = await db.User.findAll({where: {
+      email: email,
+      password: password,
+    }});
+    res.status(200);
+    res.send(user[0]);
+  } catch(err) {
+    console.log(err);
+    res.status(500);
+  }
+}
+
+module.exports = { getUsers, createUser, userLogin };
