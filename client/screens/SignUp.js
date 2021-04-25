@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 
 const SignUp = ({ navigation }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirm, setConfirm] = useState('');
+
+  const onRegister = () => {
+    const user = {
+      name,
+      email,
+      password,
+    };
+    navigation.navigate('Navigation');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.head}>
@@ -10,12 +24,34 @@ const SignUp = ({ navigation }) => {
       </View>
       <View style={styles.startContainer}>
       <View>
-        <TextInput placeholder='Full Name' style={styles.input} />
-        <TextInput placeholder='Email' style={styles.input} />
-        <TextInput placeholder='Password' style={styles.input} />
-        <TextInput placeholder='Confirm Password' style={styles.input} />
+        <TextInput
+          name={name}
+          onChangeText={(name) => setName(name)}
+          placeholder='Full Name'
+          style={styles.input}
+          />
+        <TextInput
+          email={email}
+          onChangeText={(email) => setEmail(email)}
+          placeholder='Email'
+          style={styles.input}
+        />
+        <TextInput
+          password={password}
+          secureTextEntry={true}
+          onChangeText={(password) => setPassword(password)}
+          placeholder='Password'
+          style={styles.input}
+        />
+        <TextInput
+          confirm={confirm}
+          secureTextEntry={true}
+          onChangeText={(confirm) => setConfirm(confirm)}
+          placeholder='Confirm Password'
+          style={styles.input}
+        />
       </View>
-        <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('Navigation')}}>
+        <TouchableOpacity style={styles.button} onPress={() => onRegister()}>
           <Text style={styles.text}>Register</Text>
         </TouchableOpacity>
           <View style={styles.signCont}>
@@ -54,7 +90,6 @@ const styles = StyleSheet.create({
   signIn: {
     color: '#00BFA6',
     fontWeight: 'bold',
-    // textAlign: 'center',
   },
   text: {
     color: 'white',
@@ -62,7 +97,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   startContainer: {
-    // alignContent: 'flex-end',
     marginBottom: 30,
   },
   text: {
