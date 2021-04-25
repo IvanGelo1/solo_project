@@ -35,4 +35,16 @@ const createRunTrace = async (runTrace) => {
   return response;
 };
 
-module.exports = { getAllRuns, createRun, createRunTrace };
+const createUser = async (user) => {
+  const raw = await fetch(`${EXPO_API_URL}/user`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  });
+  const response = await raw.json();
+  return response;
+};
+
+module.exports = { getAllRuns, createRun, createRunTrace, createUser };
