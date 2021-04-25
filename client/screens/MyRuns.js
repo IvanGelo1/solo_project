@@ -16,10 +16,12 @@ const MyRuns = ({ navigation }) => {
     const fetchRuns = async () => {
       const allRuns = await apiService.getAllRuns();
       const sorted = allRuns.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-      setRuns(prevRuns => sorted);
-      setTotalRuns(prevTotalRuns => sorted.length);
-      setTotalDistance(prevTotalDistance => sorted.map(item => item.distance).reduce((prev, next) => prev + next));
-      setTotalDuration(prevTotalDuration => sorted.map(item => item.duration).reduce((prev, next) => prev + next));
+      if (sorted.length) {
+        setRuns(prevRuns => sorted);
+        setTotalRuns(prevTotalRuns => sorted.length);
+        setTotalDistance(prevTotalDistance => sorted.map(item => item.distance).reduce((prev, next) => prev + next));
+        setTotalDuration(prevTotalDuration => sorted.map(item => item.duration).reduce((prev, next) => prev + next));
+      }
     }
     fetchRuns();
   }, []);
@@ -34,11 +36,20 @@ const MyRuns = ({ navigation }) => {
         <Text style={styles.total}>{totalDistance.toFixed(2)} km</Text>
         <Text style={styles.total}>{totDur}</Text>
       </View>
-      <FlatList
-      data={runs}
-      keyExtractor={item => item.uuid}
-      renderItem={(data) => <RunPreview navigation={navigation} item={data.item} />}
-      />
+      {
+        runs.length
+        ?
+        <FlatList
+        data={runs}
+        keyExtractor={item => item.uuid}
+        renderItem={(data) => <RunPreview navigation={navigation} item={data.item} />}
+        />
+        :
+        <View>
+          <Text>Antoher run bites the dust</Text>
+        </View>
+
+      }
   </View>
   );
 };
