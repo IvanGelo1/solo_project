@@ -45,8 +45,8 @@ const MyRuns = ({ navigation }) => {
         renderItem={(data) => <RunPreview navigation={navigation} item={data.item} />}
         />
         :
-        <View>
-          <Text>Antoher run bites the dust</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>These numbers look kinda sad, maybe you should go and fix that...</Text>
         </View>
 
       }
@@ -84,6 +84,18 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  textContainer: {
+    margin: 15,
+    marginTop: 30,
+    padding: 20,
+    alignSelf: 'center'
+  },
+  text: {
+    fontSize: 20,
+    color: 'rgba(77,138,240, 1)',
+    fontWeight: 'bold',
+    textAlign: 'center'
   }
 })
 
