@@ -100,4 +100,28 @@ const getAllUsers = async () => {
   return sorted;
 }
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance, getAllUsers }
+const getPublicRuns = async () => {
+  const raw = await fetch(`${EXPO_API_URL}/public`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+  const response = await raw.json();
+  return response;
+}
+
+const createPublicRun = async (publicRun) => {
+  const raw = await fetch(`${EXPO_API_URL}/public`, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify(publicRun)
+  })
+  const response = await raw.json();
+  return response;
+}
+
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance, getAllUsers, getPublicRuns }
