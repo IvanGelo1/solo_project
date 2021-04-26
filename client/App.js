@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Share } from 'react-native'
+import { StyleSheet, Alert } from 'react-native'
 import * as Location from 'expo-location'
 
 import { Entypo } from '@expo/vector-icons';
@@ -40,14 +40,22 @@ const App = () => {
   }, []);
 
   const userName = useSelector(state => state.userName.value);
-  // console.log('userName', userName);
   const dur = useSelector(state => state.dur.value);
-  console.log('dur', dur);
+  const distance = useSelector(state => state.distance.value);
+  const pace = useSelector(state => state.pace.value);
+  const mapTrace = useSelector(state => state.mapTrace.value);
+  const mapTraceStr = JSON.stringify(mapTrace);
 
 
   const shareRun = async () => {
-    console.log('Clicked')
-
+    Alert.alert('Share your Run!', 'Another run bites the dust...');
+    const publicRun = {
+      name: userName,
+      duration: dur,
+      distance,
+      pace,
+      mapTrace: mapTraceStr,
+    };
   }
 
   return (

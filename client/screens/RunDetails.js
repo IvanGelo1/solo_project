@@ -6,7 +6,11 @@ import formatting from '../helpers/formatting'
 import { Feather, MaterialIcons } from '@expo/vector-icons'
 
 import { useDispatch } from 'react-redux';
+
 import { durChange } from '../features/durSlice';
+import { distanceChange } from '../features/distanceSlice';
+import { paceChange } from '../features/paceSlice';
+import { mapTraceChange } from '../features/mapTraceSlice';
 
 import apiService from '../apiService/apiClientService';
 
@@ -27,15 +31,14 @@ const RunDetails = ({ route }) => {
       const traces = await apiService.getTrace(id);
       if (traces.length) {
         setMapTrace(traces);
+        dispatch(mapTraceChange(traces));
       }
     }
     fetchTrace();
-    dispatch(durChange(time))
-  }, [])
-
-
-
-
+    dispatch(durChange(time));
+    dispatch(distanceChange(distance));
+    dispatch(paceChange(pace));
+  }, []);
 
   return (
     <View style={styles.container}>
