@@ -88,4 +88,15 @@ const updateDistance = async (id, distance) => {
   return response;
 }
 
+const getAllUsers = async () => {
+  const raw = await fetch(`${EXPO_API_URL}/user`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+  const response = await raw.json();
+  return response;
+}
+
 module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance }
