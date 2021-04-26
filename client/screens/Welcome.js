@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import RunningSvg from '../src/RunningSvg';
 
 const Welcome = ({ navigation }) => {
   return (
@@ -9,10 +10,9 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.p}>Life is short...</Text>
         <Text style={styles.p}>Running makes it seem longer</Text>
       </View>
-      <Image
-        style={styles.img}
-        source={require('../assets/undraw_running_wild_ni0y.png')}
-      />
+      <View  style={styles.svg}>
+        <RunningSvg />
+      </View>
       <View style={styles.startContainer}>
         <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('SignUp') }}>
           <Text style={styles.text}>Get started</Text>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
   startContainer: {
     marginBottom: 30
   },
-  img: {
-    alignSelf: 'center'
+  svg: {
+    alignSelf: 'center',
   },
   button: {
     alignItems: 'center',

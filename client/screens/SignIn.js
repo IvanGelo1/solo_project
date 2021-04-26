@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, Image } from 'react-native'
-import apiService from '../apiService/apiClientService'
+import apiService from '../apiService/apiClientService';
+
+import LighthouseSvg from '../src/LighthouseSvg';
 
 import { useDispatch } from 'react-redux'
 import { userChange } from '../features/activeUserSlice'
@@ -24,10 +26,9 @@ const SignIn = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.head}>Welcome back!</Text>
-      <Image
-        style={styles.img}
-        source={require('../assets/undraw_Lighthouse_frb8.png')}
-      />
+      <View style={styles.svg}>
+        <LighthouseSvg />
+      </View>
       <View style={styles.startContainer}>
         <View>
           <TextInput
@@ -62,7 +63,8 @@ const SignIn = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0F4F3',
+    // backgroundColor: '#F0F4F3',
+    backgroundColor: 'rgba(0, 191, 166, 0.07)',
     justifyContent: 'space-between'
   },
   head: {
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   startContainer: {
     marginBottom: 30
   },
-  img: {
+  svg: {
     alignSelf: 'center'
   },
   forgot: {

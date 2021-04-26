@@ -40,11 +40,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomWidth: 2,
-    borderBottomColor: 'rgba(0, 191, 166, 0.2)',
-    borderTopColor: 'rgba(0, 191, 166, 0.2)',
-    borderTopWidth: 1,
+    borderBottomColor: 'rgba(0, 191, 166, 0.1)',
     height: 70,
-    backgroundColor: 'rgba(0, 191, 166, 0.12)',
+    backgroundColor: 'rgba(0, 191, 166, 0.13)',
   },
   name: {
     alignSelf: 'center',
