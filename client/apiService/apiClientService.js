@@ -3,6 +3,7 @@ import {EXPO_API_URL } from '@env';
 const createRun = async (run) => {
   const raw = await fetch(`${EXPO_API_URL}/run`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-type': 'application/json'
     },
@@ -15,6 +16,7 @@ const createRun = async (run) => {
 const getAllRuns = async (userId) => {
   const raw = await fetch(`${EXPO_API_URL}/runs/${userId}`, {
     method: 'GET',
+    credentials: 'include',
     headers: {
       'Content-type': 'application/json'
     }
@@ -27,6 +29,7 @@ const getAllRuns = async (userId) => {
 const createRunTrace = async (runTrace) => {
   const raw = await fetch(`${EXPO_API_URL}/runTrace`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-type': 'application/json'
     },
@@ -39,6 +42,7 @@ const createRunTrace = async (runTrace) => {
 const createUser = async (user) => {
   const raw = await fetch(`${EXPO_API_URL}/user`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-type': 'application/json'
     },
@@ -51,6 +55,7 @@ const createUser = async (user) => {
 const login = async (user) => {
   const raw = await fetch(`${EXPO_API_URL}/login`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-type': 'application/json'
     },
