@@ -14,6 +14,7 @@ const averagePace = (currDistance, from, to) => {
     return 0;
   };
   const pace = ((to.timestamp - from.timestamp) / 1000 / 60) / (currDistance);
+  if (pace === Infinity) return 0;
   return pace;
 };
 

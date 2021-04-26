@@ -114,7 +114,6 @@ const App = () => {
             title: runDate,
             headerStyle: {
               backgroundColor: '#00BFA6',
-              // height: 50
             },
             headerTitleStyle: {
               color: 'white',

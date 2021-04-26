@@ -40,9 +40,12 @@ const MainRun = ({ location }) => {
   useEffect(() => {
     const lastPosition = positions.length > 2 ? positions[positions.length - 2] : location;
     const currentPosition = positions.length ? positions[positions.length - 1] : location;
+    const startingPosition = positions.length ? positions[0] : location;
 
     setDistance(prevDistance => prevDistance + runCalc.distanceBetween(lastPosition, currentPosition));
-    setAvgPace(prevAvgPace => runCalc.averagePace(distance, location, currentPosition));
+    if (lastPosition !== currentPosition) {
+      setAvgPace(prevAvgPace => runCalc.averagePace(distance, startingPosition, currentPosition));
+    }
     setDuration(prevDuration => prevDuration + runCalc.timeBetween(lastPosition, currentPosition));
     setElevationGain(prevElevationGain => runCalc.elGain(lastPosition, currentPosition));
     setElevationLoss(prevElevationLoss => runCalc.elLoss(lastPosition, currentPosition));
@@ -80,10 +83,10 @@ const MainRun = ({ location }) => {
       RunId: createdRun.id
     };
     await apiService.createRunTrace(trace);
-    setDistance(0);
-    setAvgPace(0),
+    // setDistance(0);
+    // setAvgPace(0),
     setPositions([]);
-    setDuration(0);
+    // setDuration(0);
     setIsRunning(false);
   };
 
