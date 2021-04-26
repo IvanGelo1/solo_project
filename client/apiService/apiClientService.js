@@ -65,4 +65,16 @@ const login = async (user) => {
   return response
 }
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser, login }
+const getTrace = async (id) => {
+  const raw = await fetch(`${EXPO_API_URL}/runTrace/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json'
+    }
+  })
+  const response = await raw.json();
+  const parsed = JSON.parse(response[0].mapTrace);
+  return parsed;
+}
+
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace }

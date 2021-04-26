@@ -5,6 +5,8 @@ import moment from 'moment'
 import formatting from '../helpers/formatting'
 import { Feather, MaterialIcons } from '@expo/vector-icons'
 
+import apiService from '../apiService/apiClientService';
+
 const RunDetails = ({ route }) => {
   const [mapTrace, setMapTrace] = useState([{ latitude: 41, longitude: 2 }])
 
@@ -12,16 +14,13 @@ const RunDetails = ({ route }) => {
   const { distance, duration, avgPace, timeStarted, id } = item
 
   useEffect(() => {
-    (async function fetchTraces () {
-      const raw = await fetch(`http://192.168.1.125:3000/runTrace/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-type': 'application/json'
-        }
-      })
-      const response = await raw.json()
-      setMapTrace(JSON.parse(response[0].mapTrace))
-    })()
+    const fetchTrace = async () => {
+      const traces = await apiService.getTrace(id);
+      if (traces.length) {
+        setMapTrace(traces);
+      }
+    }
+    fetchTrace();
   }, [])
 
   const time = formatting.timeFormat(duration)
