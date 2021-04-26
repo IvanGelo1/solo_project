@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import UserRank from '../components/UserRank'
+import apiService from '../apiService/apiClientService';
 
 const Leaderboard = () => {
   const mockData = [
@@ -55,6 +56,16 @@ const Leaderboard = () => {
     }
   ]
 
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const allUsers = await apiService.getAllUsers();
+      setUsers(allUsers);
+    };
+    fetchUsers();
+  }, [])
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -63,10 +74,15 @@ const Leaderboard = () => {
       <View style={styles.subHeader}>
         <Text style={styles.subTitle}>LeaderBoard</Text>
       </View>
-      <FlatList
+      {/* <FlatList
         data={mockData}
         keyExtractor={item => item.name}
         renderItem={(data) => <UserRank item={data.item} />}
+      /> */}
+      <FlatList
+        data={users}
+        keyExtractor={item => item.id.toString()}
+        renderItem={(data) => <UserRank rank={users.indexOf(data.item)} item={data.item} />}
       />
     </View>
   )

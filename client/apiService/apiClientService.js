@@ -96,7 +96,8 @@ const getAllUsers = async () => {
     }
   });
   const response = await raw.json();
-  return response;
+  const sorted = response.sort((a, b) => b.distance - a.distance);
+  return sorted;
 }
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance }
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance, getAllUsers }
