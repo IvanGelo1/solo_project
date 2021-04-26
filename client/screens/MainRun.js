@@ -82,6 +82,8 @@ const MainRun = ({ location }) => {
       RunId: createdRun.id
     }
     await apiService.createRunTrace(trace)
+
+    await apiService.updateDistance(UserId, distance);
     // setDistance(0);
     // setAvgPace(0),
     setPositions([])
