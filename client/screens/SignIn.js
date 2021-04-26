@@ -6,6 +6,7 @@ import LighthouseSvg from '../src/LighthouseSvg';
 
 import { useDispatch } from 'react-redux'
 import { userChange } from '../features/activeUserSlice'
+import { userNameChange } from '../features/userNameSlice'
 
 const SignIn = ({ navigation }) => {
   const [email, setEmail] = useState('')
@@ -20,6 +21,7 @@ const SignIn = ({ navigation }) => {
     }
     const currentUser = await apiService.login(user)
     dispatch(userChange(currentUser.id))
+    dispatch(userNameChange(currentUser.name))
     navigation.navigate('Navigation')
   }
 

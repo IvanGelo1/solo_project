@@ -5,14 +5,22 @@ import moment from 'moment'
 import formatting from '../helpers/formatting'
 import { Feather, MaterialIcons } from '@expo/vector-icons'
 
+import { useDispatch } from 'react-redux';
+import { durChange } from '../features/durSlice';
+
 import apiService from '../apiService/apiClientService';
+
 
 const RunDetails = ({ route }) => {
   const [mapTrace, setMapTrace] = useState([{ latitude: 41, longitude: 2 }]);
-  const [shared, setShared] = useState(false);
+
+  const dispatch = useDispatch();
 
   const { item } = route.params
   const { distance, duration, avgPace, timeStarted, id } = item
+
+  const time = formatting.timeFormat(duration)
+  const pace = formatting.avgPaceFormat(avgPace)
 
   useEffect(() => {
     const fetchTrace = async () => {
@@ -22,10 +30,12 @@ const RunDetails = ({ route }) => {
       }
     }
     fetchTrace();
+    dispatch(durChange(time))
   }, [])
 
-  const time = formatting.timeFormat(duration)
-  const pace = formatting.avgPaceFormat(avgPace)
+
+
+
 
   return (
     <View style={styles.container}>
@@ -49,15 +59,6 @@ const RunDetails = ({ route }) => {
           strokeWidth={6}
         />
       </MapView>
-      {
-        !shared
-        ?
-        <TouchableOpacity style={styles.share} >
-          <Text style={styles.buttonFont}>SHARE</Text>
-        </TouchableOpacity>
-        :
-        <View></View>
-      }
       <View style={styles.mainInfo}>
         <View style={styles.middle}>
           <Text style={styles.mainValue}>{distance.toFixed(2)} km</Text>

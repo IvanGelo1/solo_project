@@ -24,7 +24,7 @@ const Navigation = ({ location }) => {
           } else if (route.name === 'Discover') {
             iconName = 'map-signs';
           }
-          return <FontAwesome5 name={iconName} size={size} color={color} />
+          return <FontAwesome5 name={iconName} size={22} color={color} />
         }
       })}
       tabBarOptions={{

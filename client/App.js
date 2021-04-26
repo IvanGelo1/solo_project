@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Share } from 'react-native'
 import * as Location from 'expo-location'
+
+import { Entypo } from '@expo/vector-icons';
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -21,6 +23,7 @@ const Stack = createStackNavigator()
 const App = () => {
   const [location, setLocation] = useState(null)
   const [errorMsg, setErrotMsg] = useState(null)
+  const [form, setForm] = useState(false)
 
   const runDate = useSelector(state => state.date.value)
 
@@ -34,7 +37,18 @@ const App = () => {
       const location = await Location.getCurrentPositionAsync({})
       setLocation(location)
     })()
-  }, [])
+  }, []);
+
+  const userName = useSelector(state => state.userName.value);
+  // console.log('userName', userName);
+  const dur = useSelector(state => state.dur.value);
+  console.log('dur', dur);
+
+
+  const shareRun = async () => {
+    console.log('Clicked')
+
+  }
 
   return (
     <NavigationContainer>
@@ -112,6 +126,9 @@ const App = () => {
           component={RunDetails}
           options={{
             title: runDate,
+            headerRight: () => (
+              <Entypo style={styles.share} name="share" size={30} color="white" onPress={() => shareRun()} />
+            ),
             headerStyle: {
               backgroundColor: '#00BFA6'
             },
@@ -132,6 +149,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  share: {
+    marginRight: 20,
   }
 })
 
