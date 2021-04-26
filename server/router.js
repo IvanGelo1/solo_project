@@ -10,6 +10,7 @@ const traceController = require('./controllers/mapTracer.controller')
 router.get('/user', userController.getUsers)
 router.post('/user', userController.createUser)
 router.post('/login', userController.userLogin)
+router.put('/user/:id/:distance', userController.updateDistance);
 
 router.get('/runs/:userId', runController.getRuns)
 router.post('/run', runController.createRun)

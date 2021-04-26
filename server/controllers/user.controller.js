@@ -41,4 +41,21 @@ async function userLogin (req, res) {
   }
 }
 
-module.exports = { getUsers, createUser, userLogin }
+async function updateDistance (req, res) {
+  const { id, distance } = req.params;
+
+  try {
+    const user = await db.User.findAll({ where: { id: id } });
+    const updated = await user[0].increment(
+      ['distance'],
+      {by: distance},
+    )
+    res.status(200);
+    res.send(updated)
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
+}
+
+module.exports = { getUsers, createUser, userLogin, updateDistance }
