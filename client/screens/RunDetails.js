@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import MapView from 'react-native-maps'
 import moment from 'moment'
 import formatting from '../helpers/formatting'
@@ -8,7 +8,8 @@ import { Feather, MaterialIcons } from '@expo/vector-icons'
 import apiService from '../apiService/apiClientService';
 
 const RunDetails = ({ route }) => {
-  const [mapTrace, setMapTrace] = useState([{ latitude: 41, longitude: 2 }])
+  const [mapTrace, setMapTrace] = useState([{ latitude: 41, longitude: 2 }]);
+  const [shared, setShared] = useState(false);
 
   const { item } = route.params
   const { distance, duration, avgPace, timeStarted, id } = item
@@ -48,6 +49,15 @@ const RunDetails = ({ route }) => {
           strokeWidth={6}
         />
       </MapView>
+      {
+        !shared
+        ?
+        <TouchableOpacity style={styles.share} >
+          <Text style={styles.buttonFont}>SHARE</Text>
+        </TouchableOpacity>
+        :
+        <View></View>
+      }
       <View style={styles.mainInfo}>
         <View style={styles.middle}>
           <Text style={styles.mainValue}>{distance.toFixed(2)} km</Text>
@@ -154,6 +164,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'rgba(77, 138, 240, 1)',
     marginRight: 12
+  },
+  share: {
+    position: 'absolute',
+    borderRadius: 20,
+    backgroundColor: 'rgba(77, 138, 240, 1)',
+    top: '0%',
+    alignSelf: 'flex-end'
+  },
+  buttonFont: {
+
   }
 })
 

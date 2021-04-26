@@ -4,57 +4,57 @@ import UserRank from '../components/UserRank'
 import apiService from '../apiService/apiClientService';
 
 const Leaderboard = () => {
-  const mockData = [
-    {
-      name: 'James Hook',
-      totalDistance: 42.2,
-      rank: 1
-    },
-    {
-      name: 'Isaac Newton',
-      totalDistance: 36.8,
-      rank: 2
-    },
-    {
-      name: 'Joe Rogan',
-      totalDistance: 34.5,
-      rank: 3
-    },
-    {
-      name: 'Keith Moon',
-      totalDistance: 28.4,
-      rank: 4
-    },
-    {
-      name: 'Robert Plant',
-      totalDistance: 24.1,
-      rank: 5
-    },
-    {
-      name: 'Kai Fu Lee',
-      totalDistance: 20.8,
-      rank: 6
-    },
-    {
-      name: 'Bruce Lee',
-      totalDistance: 18.8,
-      rank: 7
-    },
-    {
-      name: 'Jimmy Page',
-      totalDistance: 17.4,
-      rank: 8
-    }, {
-      name: 'Pete Sampras',
-      totalDistance: 14.8,
-      rank: 9
-    },
-    {
-      name: 'Andre Agassi',
-      totalDistance: 13.2,
-      rank: 10
-    }
-  ]
+  // const mockData = [
+  //   {
+  //     name: 'James Hook',
+  //     totalDistance: 42.2,
+  //     rank: 1
+  //   },
+  //   {
+  //     name: 'Isaac Newton',
+  //     totalDistance: 36.8,
+  //     rank: 2
+  //   },
+  //   {
+  //     name: 'Joe Rogan',
+  //     totalDistance: 34.5,
+  //     rank: 3
+  //   },
+  //   {
+  //     name: 'Keith Moon',
+  //     totalDistance: 28.4,
+  //     rank: 4
+  //   },
+  //   {
+  //     name: 'Robert Plant',
+  //     totalDistance: 24.1,
+  //     rank: 5
+  //   },
+  //   {
+  //     name: 'Kai Fu Lee',
+  //     totalDistance: 20.8,
+  //     rank: 6
+  //   },
+  //   {
+  //     name: 'Bruce Lee',
+  //     totalDistance: 18.8,
+  //     rank: 7
+  //   },
+  //   {
+  //     name: 'Jimmy Page',
+  //     totalDistance: 17.4,
+  //     rank: 8
+  //   }, {
+  //     name: 'Pete Sampras',
+  //     totalDistance: 14.8,
+  //     rank: 9
+  //   },
+  //   {
+  //     name: 'Andre Agassi',
+  //     totalDistance: 13.2,
+  //     rank: 10
+  //   }
+  // ]
 
   const [users, setUsers] = useState([]);
 

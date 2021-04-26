@@ -26,7 +26,7 @@ const SignUp = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.head}>
-        <Text style={styles.welcome}>Welcome on board!</Text>
+        <Text style={styles.welcome}>Welcome aboard!</Text>
         <Text style={styles.quote}>All for run and run for all!</Text>
       </View>
       <View style={styles.startContainer}>
@@ -76,7 +76,7 @@ const SignUp = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F0F4F3',
+    backgroundColor: 'rgba(0, 191, 166, 0.07)',
     justifyContent: 'space-between'
   },
   head: {
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   welcome: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 32,
+    // fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20
   },

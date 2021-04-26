@@ -106,7 +106,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#00BFA6',
     fontWeight: 'bold'
-  }
+  },
+  text: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
 })
 
 export default SignIn

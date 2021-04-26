@@ -5,6 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons'
 import MainRun from './MainRun'
 import MyRuns from './MyRuns'
 import Leaderboard from './Leaderboard'
+import Discover from './Discover';
 
 const Tab = createBottomTabNavigator()
 
@@ -17,9 +18,11 @@ const Navigation = ({ location }) => {
           if (route.name === 'MainRun') {
             iconName = 'running'
           } else if (route.name === 'MyRuns') {
-            iconName = 'database'
+            iconName = 'database';
           } else if (route.name === 'Leaderboard') {
-            iconName = 'medal'
+            iconName = 'medal';
+          } else if (route.name === 'Discover') {
+            iconName = 'map-signs';
           }
           return <FontAwesome5 name={iconName} size={size} color={color} />
         }
@@ -38,8 +41,8 @@ const Navigation = ({ location }) => {
         {() => <MainRun location={location} />}
       </Tab.Screen>
       <Tab.Screen name='MyRuns' component={MyRuns} />
-
       <Tab.Screen name='Leaderboard' component={Leaderboard} />
+      <Tab.Screen name='Discover' component={Discover} />
     </Tab.Navigator>
   )
 }
