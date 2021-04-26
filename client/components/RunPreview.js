@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-    color: '#4D8AF0',
+    color: 'rgba(77, 138, 240, 0.7)',
     marginRight: 10
   },
   main: {
