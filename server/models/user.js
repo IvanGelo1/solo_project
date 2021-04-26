@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       defaultValue: 0
     }
-  });
+  })
 
   User.associate = model => {
-    User.hasMany(model.Run);
-  };
+    User.hasMany(model.Run)
+  }
 
-  return User;
+  return User
 }

@@ -1,11 +1,10 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import formatting from '../helpers/formatting';
+import React from 'react'
+import { Text, View, StyleSheet } from 'react-native'
+import formatting from '../helpers/formatting'
 
 const Monitor = ({ distance, avgPace, duration }) => {
-
-  const time = formatting.timeFormat(duration);
-  const pace = formatting.avgPaceFormat(avgPace);
+  const time = formatting.timeFormat(duration)
+  const pace = formatting.avgPaceFormat(avgPace)
 
   return (
     <View style={styles.container}>
@@ -23,41 +22,41 @@ const Monitor = ({ distance, avgPace, duration }) => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     height: 200,
-    backgroundColor: '#00BFA6',
+    backgroundColor: '#00BFA6'
   },
   title: {
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
     marginTop: 10,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   durationName: {
     color: 'white',
     fontSize: 11,
     textAlign: 'center',
-    marginTop: 15,
+    marginTop: 15
   },
   duration: {
     color: 'white',
     textAlign: 'center',
     fontSize: 40,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   distanceName: {
     color: 'white',
     fontSize: 11,
-    textAlign: 'center',
+    textAlign: 'center'
   },
   monitor: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   distanceView: {
     margin: 20,
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
   avgPaceView: {
     margin: 20,
     marginRight: 55,
-    marginTop: 5,
+    marginTop: 5
   },
   avgPace: {
     color: 'white',
@@ -84,9 +83,8 @@ const styles = StyleSheet.create({
   avgPaceName: {
     color: 'white',
     fontSize: 11,
-    textAlign: 'center',
+    textAlign: 'center'
   }
 })
 
-
-export default Monitor;
+export default Monitor

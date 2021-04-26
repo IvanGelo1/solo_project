@@ -1,63 +1,62 @@
-import React from 'react';
-import  { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import React from 'react'
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 
-
-const Welcome = ({navigation}) => {
+const Welcome = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>yKnot.</Text>
       <View>
-      <Text style={styles.p}>Life is short...</Text>
-      <Text style={styles.p}>Running makes it seem longer</Text>
+        <Text style={styles.p}>Life is short...</Text>
+        <Text style={styles.p}>Running makes it seem longer</Text>
       </View>
       <Image
         style={styles.img}
         source={require('../assets/undraw_running_wild_ni0y.png')}
       />
       <View style={styles.startContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('SignUp')}}>
-          <Text style={styles.text} >Get started</Text>
+        <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('SignUp') }}>
+          <Text style={styles.text}>Get started</Text>
         </TouchableOpacity>
         <View style={styles.signCont}>
           <Text style={styles.user}>Already have an account? </Text>
-          <TouchableOpacity onPress={() => {navigation.navigate('SignIn')}}>
+          <TouchableOpacity onPress={() => { navigation.navigate('SignIn') }}>
             <Text style={styles.signIn}>Sign In</Text>
           </TouchableOpacity>
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F0F4F3',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   title: {
     fontSize: 48,
     fontWeight: '900',
     textAlign: 'center',
-    marginTop: 60,
+    marginTop: 60
   },
   p: {
     textAlign: 'center',
-    fontSize: 18,
+    fontSize: 18
   },
   startContainer: {
-    marginBottom: 30,
+    marginBottom: 30
   },
   img: {
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
   button: {
-    alignItems: "center",
-    backgroundColor: "#00BFA6",
+    alignItems: 'center',
+    backgroundColor: '#00BFA6',
     borderRadius: 3,
     padding: 12,
     margin: 30,
-    marginBottom: 10,
+    marginBottom: 10
   },
   signCont: {
     flexDirection: 'row',
@@ -66,16 +65,16 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   user: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
   signIn: {
     color: '#00BFA6',
     fontWeight: 'bold',
-    textAlign: 'center',
+    textAlign: 'center'
   }
 })
 
-export default Welcome;
+export default Welcome

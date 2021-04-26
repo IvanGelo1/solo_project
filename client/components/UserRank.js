@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React from 'react'
+import { Text, View, StyleSheet } from 'react-native'
 
 const UserRank = ({ item }) => {
   return (
@@ -10,8 +10,8 @@ const UserRank = ({ item }) => {
       </View>
 
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   user: {
@@ -25,14 +25,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginLeft: 30,
     color: '#4D8AF0',
-    fontSize: 16,
+    fontSize: 16
   },
   distance: {
     alignSelf: 'center',
     marginRight: 30,
     color: '#4D8AF0',
-    fontSize: 16,
+    fontSize: 16
   }
-});
+})
 
-export default UserRank;
+export default UserRank

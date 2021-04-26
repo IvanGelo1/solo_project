@@ -1,4 +1,4 @@
-import {EXPO_API_URL } from '@env';
+import { EXPO_API_URL } from '@env'
 
 const createRun = async (run) => {
   const raw = await fetch(`${EXPO_API_URL}/run`, {
@@ -8,10 +8,10 @@ const createRun = async (run) => {
       'Content-type': 'application/json'
     },
     body: JSON.stringify(run)
-  });
-  const response = await raw.json();
-  return response;
-};
+  })
+  const response = await raw.json()
+  return response
+}
 
 const getAllRuns = async (userId) => {
   const raw = await fetch(`${EXPO_API_URL}/runs/${userId}`, {
@@ -20,11 +20,11 @@ const getAllRuns = async (userId) => {
     headers: {
       'Content-type': 'application/json'
     }
-  });
-  const response = await raw.json();
-  const sorted = response.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  return sorted;
-};
+  })
+  const response = await raw.json()
+  const sorted = response.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  return sorted
+}
 
 const createRunTrace = async (runTrace) => {
   const raw = await fetch(`${EXPO_API_URL}/runTrace`, {
@@ -34,10 +34,10 @@ const createRunTrace = async (runTrace) => {
       'Content-type': 'application/json'
     },
     body: JSON.stringify(runTrace)
-  });
-  const response = await raw.json();
-  return response;
-};
+  })
+  const response = await raw.json()
+  return response
+}
 
 const createUser = async (user) => {
   const raw = await fetch(`${EXPO_API_URL}/user`, {
@@ -47,10 +47,10 @@ const createUser = async (user) => {
       'Content-type': 'application/json'
     },
     body: JSON.stringify(user)
-  });
-  const response = await raw.json();
-  return response;
-};
+  })
+  const response = await raw.json()
+  return response
+}
 
 const login = async (user) => {
   const raw = await fetch(`${EXPO_API_URL}/login`, {
@@ -60,9 +60,9 @@ const login = async (user) => {
       'Content-type': 'application/json'
     },
     body: JSON.stringify(user)
-  });
-  const response = await raw.json();
-  return response;
-};
+  })
+  const response = await raw.json()
+  return response
+}
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser, login };
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login }

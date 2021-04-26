@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = (sequelize, DataTypes) => {
   const Run = sequelize.define('Run', {
@@ -8,34 +8,34 @@ module.exports = (sequelize, DataTypes) => {
     },
     distance: {
       allowNull: false,
-      type: DataTypes.FLOAT,
+      type: DataTypes.FLOAT
     },
     elevationGain: {
       allowNull: false,
-      type: DataTypes.FLOAT,
+      type: DataTypes.FLOAT
     },
     elevationLoss: {
       allowNull: false,
-      type: DataTypes.FLOAT,
+      type: DataTypes.FLOAT
     },
     timeStarted: {
       allowNull: false,
-      type: DataTypes.DATE,
+      type: DataTypes.DATE
     },
     duration: {
       allowNull: false,
       type: DataTypes.FLOAT
     },
     avgPace: {
-      allowNull:false,
+      allowNull: false,
       type: DataTypes.FLOAT
     }
-  });
+  })
 
   Run.associate = model => {
-    Run.belongsTo(model.User);
-    Run.hasMany(model.MapTrace);
-  };
+    Run.belongsTo(model.User)
+    Run.hasMany(model.MapTrace)
+  }
 
-  return Run;
+  return Run
 }

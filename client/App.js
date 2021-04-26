@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import * as Location from 'expo-location';
+import React, { useState, useEffect } from 'react'
+import { StyleSheet } from 'react-native'
+import * as Location from 'expo-location'
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import Welcome from './screens/Welcome';
-import SignIn from './screens/SignIn';
-import SignUp from './screens/SignUp';
-import Navigation from './screens/Navigation';
-import MyRuns from './screens/MyRuns';
-import RunDetails from './screens/RunDetails';
+import Welcome from './screens/Welcome'
+import SignIn from './screens/SignIn'
+import SignUp from './screens/SignUp'
+import Navigation from './screens/Navigation'
+import MyRuns from './screens/MyRuns'
+import RunDetails from './screens/RunDetails'
 
-import RunPreview from './components/RunPreview';
+import RunPreview from './components/RunPreview'
 
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 const App = () => {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrotMsg] = useState(null);
+  const [location, setLocation] = useState(null)
+  const [errorMsg, setErrotMsg] = useState(null)
 
-  const runDate = useSelector(state => state.date.value);
+  const runDate = useSelector(state => state.date.value)
 
   useEffect(() => {
     (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync()
       if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
+        setErrorMsg('Permission to access location was denied')
+        return
       }
-      const location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
+      const location = await Location.getCurrentPositionAsync({})
+      setLocation(location)
+    })()
+  }, [])
 
   return (
     <NavigationContainer>
@@ -47,49 +47,49 @@ const App = () => {
         }}
       >
         <Stack.Screen
-          name="Welcome"
+          name='Welcome'
           component={Welcome}
           options={{
             title: 'yKnot.',
             headerStyle: {
               backgroundColor: '#00BFA6',
-              height: 80,
+              height: 80
             },
             headerTitleStyle: {
-              color: 'white',
+              color: 'white'
             }
           }}
         />
         <Stack.Screen
-          name="SignUp"
+          name='SignUp'
           component={SignUp}
           options={{
             title: 'Sign Up',
             headerStyle: {
-              backgroundColor: '#00BFA6',
+              backgroundColor: '#00BFA6'
             },
             headerTitleStyle: {
-              color: 'white',
+              color: 'white'
             },
-            headerTintColor: '#ffffff',
+            headerTintColor: '#ffffff'
           }}
         />
         <Stack.Screen
-          name="SignIn"
+          name='SignIn'
           component={SignIn}
           options={{
             title: 'Sign In',
             headerStyle: {
-              backgroundColor: '#00BFA6',
+              backgroundColor: '#00BFA6'
             },
             headerTitleStyle: {
-              color: 'white',
+              color: 'white'
             },
-            headerTintColor: 'white',
+            headerTintColor: 'white'
           }}
         />
         <Stack.Screen
-          name="Navigation"
+          name='Navigation'
           options={{
             title: '',
             headerStyle: {
@@ -98,32 +98,32 @@ const App = () => {
               height: 50
             },
             headerTitleStyle: {
-              color: 'white',
+              color: 'white'
             },
-            headerTintColor: '#00BFA6',
+            headerTintColor: '#00BFA6'
           }}
         >
           {() => <Navigation location={location} />}
         </Stack.Screen>
-        <Stack.Screen name="MyRuns" component={MyRuns} />
-        <Stack.Screen name="RunPreview" component={RunPreview} />
+        <Stack.Screen name='MyRuns' component={MyRuns} />
+        <Stack.Screen name='RunPreview' component={RunPreview} />
         <Stack.Screen
-          name="RunDetails"
+          name='RunDetails'
           component={RunDetails}
           options={{
             title: runDate,
             headerStyle: {
-              backgroundColor: '#00BFA6',
+              backgroundColor: '#00BFA6'
             },
             headerTitleStyle: {
-              color: 'white',
+              color: 'white'
             },
-            headerTintColor: 'white',
+            headerTintColor: 'white'
           }}
         />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -131,8 +131,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    justifyContent: 'center'
+  }
+})
 
-export default App;
+export default App

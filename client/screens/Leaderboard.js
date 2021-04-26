@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import UserRank from '../components/UserRank';
+import React from 'react'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
+import UserRank from '../components/UserRank'
 
 const Leaderboard = () => {
   const mockData = [
@@ -42,17 +42,17 @@ const Leaderboard = () => {
     {
       name: 'Jimmy Page',
       totalDistance: 17.4,
-      rank: 8,
-    },{
+      rank: 8
+    }, {
       name: 'Pete Sampras',
       totalDistance: 14.8,
-      rank: 9,
+      rank: 9
     },
     {
       name: 'Andre Agassi',
       totalDistance: 13.2,
-      rank: 10,
-    },
+      rank: 10
+    }
   ]
 
   return (
@@ -64,13 +64,13 @@ const Leaderboard = () => {
         <Text style={styles.subTitle}>LeaderBoard</Text>
       </View>
       <FlatList
-      data={mockData}
-      keyExtractor={item => item.name}
-      renderItem={(data) => <UserRank item={data.item} />}
+        data={mockData}
+        keyExtractor={item => item.name}
+        renderItem={(data) => <UserRank item={data.item} />}
       />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -79,25 +79,25 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#00BFA6',
-    height: 40,
+    height: 40
   },
   title: {
     color: 'white',
     fontSize: 22,
     alignSelf: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   subHeader: {
     backgroundColor: '#FFD037',
     height: 45,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   subTitle: {
     color: '#00BFA6',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 20
   }
-});
+})
 
-export default Leaderboard;
+export default Leaderboard
