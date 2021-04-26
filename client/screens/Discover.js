@@ -1,18 +1,41 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 import DiscoverMain from '../components/DiscoverMain';
+import apiService from '../apiService/apiClientService';
 
 const Discover = () => {
+  const [publicRuns, setPublicRuns] = useState([]);
+
+  useEffect(() => {
+    const fetchPublic = async () => {
+      const created = await apiService.getPublicRuns();
+      setPublicRuns(created);
+    }
+    fetchPublic();
+  }, [])
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>yKnot.</Text>
       </View>
-      {/* <View style={styles.subHeader}>
+      <View style={styles.subHeader}>
         <Text style={styles.subTitle}>Discover</Text>
-      </View > */}
-      <DiscoverMain />
+      </View >
+      {
+        publicRuns.length
+        ?
+        <View style={styles.runContainer}>
+          <FlatList
+            data={publicRuns}
+            keyExtractor={item => item.id.toString()}
+            renderItem={(data) => <DiscoverMain item={data.item} />}
+          />
+        </View>
+        :
+        <View />
+      }
     </View>
   );
 };
@@ -33,7 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   subHeader: {
-    backgroundColor: '#FFD037',
+    backgroundColor: 'rgba(255, 208, 55, 0.8)',
     height: 45,
     justifyContent: 'center',
     alignItems: 'center'
@@ -42,6 +65,9 @@ const styles = StyleSheet.create({
     color: '#00BFA6',
     fontWeight: 'bold',
     fontSize: 20
+  },
+  runContainer: {
+    flex: 1
   }
 })
 

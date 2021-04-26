@@ -18,6 +18,8 @@ import RunPreview from './components/RunPreview'
 
 import { useSelector } from 'react-redux'
 
+import apiService from './apiService/apiClientService';
+
 const Stack = createStackNavigator()
 
 const App = () => {
@@ -56,6 +58,7 @@ const App = () => {
       pace,
       mapTrace: mapTraceStr,
     };
+    await apiService.createPublicRun(publicRun);
   }
 
   return (

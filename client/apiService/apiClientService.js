@@ -124,4 +124,4 @@ const createPublicRun = async (publicRun) => {
   return response;
 }
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance, getAllUsers, getPublicRuns }
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance, getAllUsers, getPublicRuns, createPublicRun }

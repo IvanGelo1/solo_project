@@ -1,27 +1,31 @@
 import React from 'react';
 import { View, Text, StyleSheet,Dimensions } from 'react-native';
+import moment from 'moment';
 
 import MapView from 'react-native-maps'
 
 import { FontAwesome5 } from '@expo/vector-icons'
 
-const DiscoverMain = () => {
+const DiscoverMain = ({ item }) => {
 
+  const { mapTrace } = item;
+  const trace = JSON.parse(mapTrace);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} elevation={1}>
       <View style={styles.header}>
-        <FontAwesome5 name="running" size={24} color="white" />
+        <Text style={styles.userName}>By: {item.name}</Text>
+        <FontAwesome5 style={styles.icon} name="running" size={24} color="white" />
       </View>
       <View style={styles.content}>
         <View>
-          <Text style={styles.text}>00:38:14</Text>
+          <Text style={styles.text}>{item.duration}</Text>
         </View>
         <View>
-          <Text style={styles.text}>7.23 km</Text>
+          <Text style={styles.text}>{item.distance.toFixed(2)} km</Text>
         </View>
         <View>
-          <Text style={styles.text}>5:32 min/km</Text>
+          <Text style={styles.text}>{item.pace} min/km</Text>
         </View>
       </View>
       <View style={styles.mapContainer}>
@@ -31,26 +35,23 @@ const DiscoverMain = () => {
             {
               latitude: 41.3950212,
               longitude: 2.1976979,
-              latitudeDelta: 0.005,
-              longitudeDelta: 0.03
+              latitudeDelta: 0.003,
+              longitudeDelta: 0.009
             }
           }
         >
-          {/* <MapView.Marker
-            coordinate={mapTrace[mapTrace.length - 1]}
+          <MapView.Marker
+            coordinate={trace[trace.length - 1]}
           />
           <MapView.Polyline
-            coordinates={mapTrace}
+            coordinates={trace}
             strokeColor='#00BFA6'
             strokeWidth={6}
-          /> */}
+          />
         </MapView>
       </View>
-      <View>
-        <Text style={styles.comment}>"Nice flat 7k, perfect for early sunday run"</Text>
-      </View>
-      <View>
-        <Text style={styles.userName}>Ivan Gelo</Text>
+      <View style={styles.dateContainer}>
+        <Text style={styles.date}>{moment(item.createdAt).format('ddd, L')}</Text>
       </View>
     </View>
   );
@@ -58,23 +59,25 @@ const DiscoverMain = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    marginTop: 20,
-    // backgroundColor: 'pink',
-    backgroundColor: 'rgba(0, 191, 166, 0.1)',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: 'rgba(0, 191, 166, 0.2)',
-
-
-    height: 400,
+    flex: 1,
+    height: '100%',
+    borderColor: 'rgba(77, 138, 240, 0.9)',
+    marginTop: 25,
+    paddingBottom: 20,
+    backgroundColor:'rgba(0, 191, 166, 0.1)',
+    shadowOpacity: 0.6,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 1,
+      width: 1
+    }
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    marginBottom: 10,
+    justifyContent: 'space-between',
     backgroundColor: 'rgba(77, 138, 240, 0.9)',
-    height: 40,
+    height: '18%',
+    marginBottom: 10,
   },
   content: {
     flexDirection: 'row',
@@ -84,35 +87,39 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 15,
     color: 'rgba(77, 138, 240, 0.9)',
+    color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    marginTop: 10
+    marginTop: 10,
+    marginLeft: 20,
+  },
+  icon: {
+    marginTop: 7,
+    marginRight: 30,
   },
   text: {
     fontSize: 16,
     color: 'rgba(77, 138, 240, 0.9)',
-    // color: 'white',
     fontWeight: 'bold',
   },
   map: {
-    width: Dimensions.get('window').width,
-    // width: '90%',
-
+    width: '85%',
     height: '100%',
-    // marginTop: 10,
     alignSelf: 'center',
+    borderRadius: 40
   },
   mapContainer: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderColor: 'rgba(0, 191, 166, 0.2)',
-    height: 250,
+    marginBottom: 10,
+    height: 140,
+    borderRadius: 40
   },
-  comment: {
-    fontSize: 14,
-    color: '#4D8AF0',
-    textAlign: 'center',
-    marginTop: 10
+  dateContainer: {
+    alignItems: 'flex-end',
+    marginRight: 20,
+  },
+  date: {
+    color: 'grey',
+    fontSize: 13,
   }
 })
 
