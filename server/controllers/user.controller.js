@@ -43,7 +43,6 @@ async function userLogin (req, res) {
 
 async function updateDistance (req, res) {
   const { id, distance } = req.params;
-
   try {
     const user = await db.User.findAll({ where: { id: id } });
     const updated = await user[0].increment(

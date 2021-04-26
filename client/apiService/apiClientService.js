@@ -77,4 +77,15 @@ const getTrace = async (id) => {
   return parsed;
 }
 
-module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace }
+const updateDistance = async (id, distance) => {
+  const raw = await fetch(`${EXPO_API_URL}/user/${id}/${distance}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json'
+    }
+  });
+  const response = await raw.json();
+  return response;
+}
+
+module.exports = { getAllRuns, createRun, createRunTrace, createUser, login, getTrace, updateDistance }
