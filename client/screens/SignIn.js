@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, Image } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native'
 import apiService from '../apiService/apiClientService';
 
 import LighthouseSvg from '../src/LighthouseSvg';
@@ -26,6 +26,8 @@ const SignIn = ({ navigation }) => {
   }
 
   return (
+    <KeyboardAvoidingView style={{flex: 1}} behavior={'height'}>
+
     <View style={styles.container}>
       <Text style={styles.head}>Welcome back!</Text>
       <View style={styles.svg}>
@@ -59,6 +61,7 @@ const SignIn = ({ navigation }) => {
         </View>
       </View>
     </View>
+    </KeyboardAvoidingView>
   )
 }
 

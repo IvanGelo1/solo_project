@@ -23,20 +23,24 @@ import apiService from './apiService/apiClientService';
 const Stack = createStackNavigator()
 
 const App = () => {
-  const [location, setLocation] = useState(null)
+  // const [location, setLocation] = useState(null)
+  const [location, setLocation] = useState({coords: {latitude: 41, longitude: 2}})
+
   const [errorMsg, setErrotMsg] = useState(null)
 
   const runDate = useSelector(state => state.date.value)
 
   useEffect(() => {
     (async () => {
-      const { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied')
-        return
-      }
-      const location = await Location.getCurrentPositionAsync({})
-      setLocation(location)
+        const { status } = await Location.requestForegroundPermissionsAsync()
+        if (status !== 'granted') {
+          setErrorMsg('Permission to access location was denied')
+          return
+        }
+        else if (status === 'granted') {
+          const location = await Location.getCurrentPositionAsync({accuracy: Location.Accuracy.High})
+          setLocation(location)
+        }
     })()
   }, []);
 
