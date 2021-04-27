@@ -18,11 +18,11 @@ const Discover = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>yKnot.</Text>
+        <Text style={styles.title}>Discover</Text>
       </View>
-      <View style={styles.subHeader}>
+      {/* <View style={styles.subHeader}>
         <Text style={styles.subTitle}>Discover</Text>
-      </View >
+      </View > */}
       {
         publicRuns.length
         ?

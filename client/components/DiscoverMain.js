@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet,Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import moment from 'moment';
 
 import MapView from 'react-native-maps'
@@ -12,7 +12,7 @@ const DiscoverMain = ({ item }) => {
   const trace = JSON.parse(mapTrace);
 
   return (
-    <View style={styles.container} elevation={1}>
+    <View style={styles.container} elevation={1.5}>
       <View style={styles.header}>
         <Text style={styles.userName}>By: {item.name}</Text>
         <FontAwesome5 style={styles.icon} name="running" size={24} color="white" />
@@ -39,6 +39,7 @@ const DiscoverMain = ({ item }) => {
               longitudeDelta: 0.009
             }
           }
+          scrollEnabled={false}
         >
           <MapView.Marker
             coordinate={trace[trace.length - 1]}
