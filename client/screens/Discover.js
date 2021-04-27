@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#00BFA6',
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
+
     height: 40
   },
   title: {
