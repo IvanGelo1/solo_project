@@ -24,7 +24,7 @@ const Stack = createStackNavigator()
 
 const App = () => {
   // const [location, setLocation] = useState(null)
-  const [location, setLocation] = useState({coords: {latitude: 41, longitude: 2}})
+  const [location, setLocation] = useState(null)
 
   const [errorMsg, setErrotMsg] = useState(null)
 
