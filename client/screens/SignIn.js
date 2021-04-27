@@ -40,6 +40,7 @@ const SignIn = ({ navigation }) => {
             onChangeText={email => setEmail(email)}
             placeholder='Email'
             style={styles.input}
+            keyboardType='email-address'
           />
           <TextInput
             password={password}
