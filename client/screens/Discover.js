@@ -47,13 +47,16 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#00BFA6',
+    backgroundColor: 'red',
     height: 40
   },
   title: {
     color: 'white',
     fontSize: 22,
     alignSelf: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginBottom: 20,
+    // alignItems: 'flex-start'
   },
   subHeader: {
     backgroundColor: 'rgba(255, 208, 55, 0.8)',

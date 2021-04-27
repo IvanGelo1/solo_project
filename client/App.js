@@ -81,7 +81,8 @@ const App = () => {
             title: 'yKnot.',
             headerStyle: {
               backgroundColor: '#00BFA6',
-              height: 80
+              // backgroundColor: 'red',
+              height: 70
             },
             headerTitleStyle: {
               color: 'white'
@@ -133,7 +134,22 @@ const App = () => {
         >
           {() => <Navigation location={location} />}
         </Stack.Screen>
-        <Stack.Screen name='MyRuns' component={MyRuns} />
+        <Stack.Screen
+          name='MyRuns'
+          component={MyRuns}
+          // options={{
+          //   title: 'All runs',
+          //   headerStyle: {
+          //     backgroundColor: 'blue',
+          //     elevation: 0,
+          //     height: 50
+          //   },
+          //   headerTitleStyle: {
+          //     color: 'white'
+          //   },
+          //   // headerTintColor: '#00BFA6'
+          //   }}
+          />
         <Stack.Screen name='RunPreview' component={RunPreview} />
         <Stack.Screen
           name='RunDetails'

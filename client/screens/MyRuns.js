@@ -57,11 +57,13 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#00BFA6',
+    // backgroundColor: 'red',
     color: 'white',
     fontSize: 20,
     height: 40,
     textAlign: 'center',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
   allData: {
     backgroundColor: 'rgba(77,138,240, 0.9)',
