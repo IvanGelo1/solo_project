@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   Dimensions,
-  TouchableOpacity,
 } from 'react-native';
 import MapView from 'react-native-maps';
 import moment from 'moment';
@@ -45,17 +44,16 @@ const RunDetails = ({ route }) => {
     dispatch(paceChange(pace));
   }, []);
 
+  const deltas = {
+    latitudeDelta: 0.005,
+    longitudeDelta: 0.03,
+  };
+
+  const region = {...deltas, ...mapTrace[mapTrace.length - 1]};
+
   return (
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        region={{
-          latitude: 41.3950212,
-          longitude: 2.1976979,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.03,
-        }}
-      >
+      <MapView style={styles.map} region={region}>
         <MapView.Marker coordinate={mapTrace[mapTrace.length - 1]} />
         <MapView.Polyline
           coordinates={mapTrace}
