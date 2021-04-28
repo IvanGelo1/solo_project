@@ -1,5 +1,12 @@
-import * as React from "react"
-import Svg, {Path, Ellipse, Circle, Defs, Stop, LinearGradient } from 'react-native-svg';
+import * as React from 'react';
+import Svg, {
+  Path,
+  Ellipse,
+  Circle,
+  Defs,
+  Stop,
+  LinearGradient,
+} from 'react-native-svg';
 
 function RunningSvg() {
   return (
@@ -366,7 +373,7 @@ function RunningSvg() {
         opacity={0.2}
       />
     </Svg>
-  )
+  );
 }
 
 export default RunningSvg;

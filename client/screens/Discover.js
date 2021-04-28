@@ -11,9 +11,9 @@ const Discover = () => {
     const fetchPublic = async () => {
       const created = await apiService.getPublicRuns();
       setPublicRuns(created);
-    }
+    };
     fetchPublic();
-  }, [])
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -23,19 +23,17 @@ const Discover = () => {
       {/* <View style={styles.subHeader}>
         <Text style={styles.subTitle}>Discover</Text>
       </View > */}
-      {
-        publicRuns.length
-        ?
+      {publicRuns.length ? (
         <View style={styles.runContainer}>
           <FlatList
             data={publicRuns}
-            keyExtractor={item => item.id.toString()}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={(data) => <DiscoverMain item={data.item} />}
           />
         </View>
-        :
+      ) : (
         <View />
-      }
+      )}
     </View>
   );
 };
@@ -43,13 +41,13 @@ const Discover = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0, 191, 166, 0.05)'
+    backgroundColor: 'rgba(0, 191, 166, 0.05)',
   },
   header: {
     backgroundColor: '#00BFA6',
     // backgroundColor: 'red',
 
-    height: 40
+    height: 40,
   },
   title: {
     color: 'white',
@@ -63,16 +61,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 208, 55, 0.8)',
     height: 45,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   subTitle: {
     color: '#00BFA6',
     fontWeight: 'bold',
-    fontSize: 20
+    fontSize: 20,
   },
   runContainer: {
-    flex: 1
-  }
-})
+    flex: 1,
+  },
+});
 
 export default Discover;

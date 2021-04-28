@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
-import dateChangeReducer from './features/dateChangeSlice'
-import activeUserReducer from './features/activeUserSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import dateChangeReducer from './features/dateChangeSlice';
+import activeUserReducer from './features/activeUserSlice';
 import userNameReducer from './features/userNameSlice';
 import durReducer from './features/durSlice';
 import distanceReducer from './features/distanceSlice';
@@ -16,5 +16,5 @@ export default configureStore({
     distance: distanceReducer,
     pace: paceReducer,
     mapTrace: mapTraceReducer,
-  }
-})
+  },
+});

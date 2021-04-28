@@ -1,17 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 export const durSlice = createSlice({
   name: 'dur',
   initialState: {
-    value: ''
+    value: '',
   },
   reducers: {
     durChange: (state, action) => {
-      state.value = action.payload
-    }
-  }
-})
+      state.value = action.payload;
+    },
+  },
+});
 
-export const { durChange } = durSlice.actions
+export const { durChange } = durSlice.actions;
 
-export default durSlice.reducer
+export default durSlice.reducer;

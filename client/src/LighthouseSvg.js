@@ -1,5 +1,13 @@
-import * as React from "react"
-import Svg, { Defs, Path, Rect, Circle, Stop, LinearGradient, G } from 'react-native-svg';
+import * as React from 'react';
+import Svg, {
+  Defs,
+  Path,
+  Rect,
+  Circle,
+  Stop,
+  LinearGradient,
+  G,
+} from 'react-native-svg';
 
 function LighthouseSvg() {
   return (
@@ -177,7 +185,7 @@ function LighthouseSvg() {
         opacity={0.05}
       />
     </Svg>
-  )
+  );
 }
 
 export default LighthouseSvg;
