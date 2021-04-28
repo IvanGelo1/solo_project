@@ -10,6 +10,13 @@ const DiscoverMain = ({ item }) => {
   const { mapTrace } = item;
   const trace = JSON.parse(mapTrace);
 
+  const deltas = {
+    latitudeDelta: 0.003,
+    longitudeDelta: 0.009,
+  };
+
+  const region = { ...trace[trace.length - 1], ...deltas };
+
   return (
     <View style={styles.container} elevation={1.5}>
       <View style={styles.header}>
@@ -35,12 +42,7 @@ const DiscoverMain = ({ item }) => {
       <View style={styles.mapContainer}>
         <MapView
           style={styles.map}
-          region={{
-            latitude: 41.3950212,
-            longitude: 2.1976979,
-            latitudeDelta: 0.003,
-            longitudeDelta: 0.009,
-          }}
+          region={region}
           scrollEnabled={false}
         >
           <MapView.Marker coordinate={trace[trace.length - 1]} />
