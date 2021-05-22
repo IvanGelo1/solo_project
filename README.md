@@ -13,6 +13,7 @@ This app is build as an exercise for learning about developing full-stack mobile
 ## Technology Used
 
 * React Native
+* Expo
 * Redux
 * Express
 * PostgreSQL
