@@ -23,9 +23,7 @@ import apiService from './apiService/apiClientService';
 const Stack = createStackNavigator();
 
 const App = () => {
-  // const [location, setLocation] = useState(null)
   const [location, setLocation] = useState(null);
-
   const [errorMsg, setErrorMsg] = useState(null);
 
   const runDate = useSelector((state) => state.date.value);
@@ -81,7 +79,6 @@ const App = () => {
             title: 'yKnot.',
             headerStyle: {
               backgroundColor: '#00BFA6',
-              // backgroundColor: 'red',
               height: 70,
             },
             headerTitleStyle: {
@@ -137,18 +134,6 @@ const App = () => {
         <Stack.Screen
           name="MyRuns"
           component={MyRuns}
-          // options={{
-          //   title: 'All runs',
-          //   headerStyle: {
-          //     backgroundColor: 'blue',
-          //     elevation: 0,
-          //     height: 50
-          //   },
-          //   headerTitleStyle: {
-          //     color: 'white'
-          //   },
-          //   // headerTintColor: '#00BFA6'
-          //   }}
         />
         <Stack.Screen name="RunPreview" component={RunPreview} />
         <Stack.Screen

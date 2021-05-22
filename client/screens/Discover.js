@@ -20,9 +20,6 @@ const Discover = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Discover</Text>
       </View>
-      {/* <View style={styles.subHeader}>
-        <Text style={styles.subTitle}>Discover</Text>
-      </View > */}
       {publicRuns.length ? (
         <View style={styles.runContainer}>
           <FlatList
@@ -45,8 +42,6 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#00BFA6',
-    // backgroundColor: 'red',
-
     height: 40,
   },
   title: {
@@ -55,7 +50,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: 'bold',
     marginBottom: 20,
-    // alignItems: 'flex-start'
   },
   subHeader: {
     backgroundColor: 'rgba(255, 208, 55, 0.8)',

@@ -92,7 +92,6 @@ const MainRun = ({ location }) => {
 
   const stopRunning = async () => {
     listener.remove();
-    console.log('Listener removed');
     const run = {
       distance,
       avgPace,
@@ -112,10 +111,7 @@ const MainRun = ({ location }) => {
     await apiService.createRunTrace(trace);
 
     await apiService.updateDistance(UserId, distance);
-    // setDistance(0);
-    // setAvgPace(0),
     setPositions([]);
-    // setDuration(0);
     setIsRunning(false);
   };
 

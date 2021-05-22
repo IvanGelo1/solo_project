@@ -80,7 +80,6 @@ const SignIn = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#F0F4F3',
     backgroundColor: 'rgba(0, 191, 166, 0.07)',
     justifyContent: 'space-between',
   },

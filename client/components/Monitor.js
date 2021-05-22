@@ -29,13 +29,11 @@ const styles = StyleSheet.create({
   container: {
     height: 200,
     backgroundColor: '#00BFA6',
-    // justifyContent: 'flex-start'
   },
   title: {
     fontSize: 20,
     color: 'white',
     fontWeight: 'bold',
-    // marginTop: 10,
     textAlign: 'center',
   },
   durationName: {

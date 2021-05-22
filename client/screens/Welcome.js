@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import RunningSvg from '../src/RunningSvg';
 
 const Welcome = ({ navigation }) => {
@@ -40,7 +40,6 @@ const Welcome = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#F0F4F3',
     backgroundColor: 'rgba(0, 191, 166, 0.07)',
     justifyContent: 'space-between',
   },

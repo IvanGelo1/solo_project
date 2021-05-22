@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import moment from 'moment';
 
 import MapView from 'react-native-maps';
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
   },
   userName: {
     fontSize: 15,
-    // color: 'rgba(77, 138, 240, 0.9)',
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
