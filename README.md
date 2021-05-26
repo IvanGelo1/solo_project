@@ -19,4 +19,4 @@ This app is build as an exercise for learning about developing full-stack mobile
 * PostgreSQL
 
 
-<!-- <img src="/assets/img/MarineGEO_logo.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/> -->
+<img src="/assets/yKnot1.png" alt="yKnot" style="height: 100px; width:100px;"/>
