@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "username_here",
+    "password": "password_here",
+    "database": "database_here",
+    "host": "host_here",
+    "dialect": "dialect_here"
+  }
+}
