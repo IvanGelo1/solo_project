@@ -10,6 +10,9 @@ This app is build as an exercise for learning about developing full-stack mobile
 
 ## Usage
 
+<img src="/assets/yKnot1.png" alt="yKnot"/>
+<img src="/assets/yKnot2.png" alt="yKnot"/>
+
 ## Technology Used
 
 * React Native
@@ -17,8 +20,3 @@ This app is build as an exercise for learning about developing full-stack mobile
 * Redux
 * Express
 * PostgreSQL
-
-
-<img src="/assets/yKnot1.png" alt="yKnot"/>
-<img src="/assets/yKnot2.png" alt="yKnot"/>
-
