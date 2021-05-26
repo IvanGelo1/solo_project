@@ -7,7 +7,11 @@ yKnot is a mobile running app, that helps users interact with the running commun
 This app is build as an exercise for learning about developing full-stack mobile apps.
 
 ## 🛠 Instalation
-After cloning the repository, from both client and server folders, run the following command:
+1. To clone the repository run the following command:
+  ```
+  git clone https://github.com/IvanGelo1/yKnot.git
+  ```
+2. After cloning the repository, from both client and server folders, run the following command:
 ```
 npm install
 ```
