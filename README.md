@@ -17,3 +17,6 @@ This app is build as an exercise for learning about developing full-stack mobile
 * Redux
 * Express
 * PostgreSQL
+
+
+<!-- <img src="/assets/img/MarineGEO_logo.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/> -->
