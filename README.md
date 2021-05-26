@@ -18,7 +18,7 @@ npm install
 
 ## 🚀 Usage
 Setup the [environment variables](https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa) and the config folder:
-1. Inside the client folder create a .env file. See client-example-env.txt for reference
+1. Inside the client folder create a .env file. See <mark>client-example-env.txt</mark> for reference
 
 To run the app:
 1. From the server folder run:
