@@ -17,6 +17,9 @@ npm install
 ```
 
 ## 🚀 Usage
+Setup the [environment variables](https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa):
+
+
 To run the app:
 1. From the server folder run:
   ```
